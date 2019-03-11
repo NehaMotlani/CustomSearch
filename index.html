@@ -4,16 +4,29 @@
     <title>Custom Search</title>
   </head>
   <body>
+
+    <script type="text/javascript">
+      function preProcess(){
+        var first = String(document.getElementById("firstname").value.split(' ').join('+'));
+        var last = String(document.getElementById("lastname").value.split(' ').join('+'));
+        var org = String(document.getElementById("organisation").value.split(' ').join('+'));
+        var loc = String(document.getElementById("location").value.split(' ').join('+'));
+        var query = "".concat("%22",first,"+",last,"%22","+OR+","%22",last,"+",first,"%22","+","%22",org,"%22","+OR+","%22",loc,"%22");
+        var link = "".concat("./EntityResolution.html?q=",query);
+        //window.alert(link);
+        window.open(link);
+      }
+    </script>
     <form>
       First name:<br>
-      <input type="text" name="firstname"><br><br>
+      <input type="text" id="firstname"><br><br>
       Last name:<br>
-      <input type="text" name="lastname"><br><br>
+      <input type="text" id="lastname"><br><br>
       Organisation:<br>
-      <input type="text" name="organisation"><br><br>
+      <input type="text" id="organisation"><br><br>
       Location:<br>
-      <input type="text" name="location"><br><br>
+      <input type="text" id="location"><br><br>
     </form>
-    <button onclick="location.href = './EntityResolution.html?q=cars';" id="myButton" class="float-left submit-button" >Search</button>
+    <button onclick="preProcess()">Search</button>
   </body>
 </html>
